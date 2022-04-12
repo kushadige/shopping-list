@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li,button {
+  cursor:pointer;
+}
+
+html,body {
+  font-family: 'Questrial', sans-serif;
+  color: #fff;
+}
+
+.coolTitle {
+  text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 40px;
+  transform: skewY(-10deg);
+  letter-spacing: 4px;
+  word-spacing: -8px;
+  color: tomato;
+  text-shadow: 
+    -1px -1px 0 firebrick,
+    -2px -2px 0 firebrick,
+    -3px -3px 0 firebrick,
+    -4px -4px 0 firebrick,
+    -5px -5px 0 firebrick,
+    -6px -6px 0 firebrick,
+    -7px -7px 0 firebrick,
+    -8px -8px 0 firebrick,
+    -30px 20px 40px dimgrey;
+}
+
+.done {
+  text-decoration: line-through;
+  color: #19293c;
+}
+
+/* Customization */
+.clr {
+  clear: both;
+}
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: #f4f4f4;
+  /* background: rgb(8, 45, 68); */
+}
+#list {
+  width: 400px;
+  min-height: 100vh;
+  padding: 40px;
+  margin: auto;
+  background: #131313
+}
+
+#list .list-head {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 25px;
+}
+
+#list .list-content {
+  list-style: none;
+  padding-bottom: 20px;
+}
+
+#list .list-content li {
+  overflow: auto;
+  padding-bottom: 5px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+#list .list-content li span {
+  width: 87%;
+  padding: 8px;
+  float: right;
+}
+
+#list .list-content li button, #enter {
+  color: #fff;
+  width: 10%;
+  padding:8px;
+  border:0;
+  border-radius: 2px;
+  background: #19293c;
+  float: left;
+}
+
+#list .list-content li button:hover, #enter:hover{
+  color: #fff;
+  background: #233a55;
+}
+
+#list .list-add {
+  padding: 10px;
+}
+
+#userinput {
+  background-color: #fff;
+  padding: 8px;
+  border: 0;
+  border-radius: 2px;
+  width: 65%;
+}
+
+#enter {
+  font-weight: bolder;
+  background: #404040;
+  float: right;
+  width: 30%;
+}
