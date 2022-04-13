@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Javascript + DOM</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <title>Shopping List</title>
 </head>
 <body>
-	<div class="container">
-		<section id="list">
-			<div class="list-head">
-				<h1>Shopping List</h1>
-				<p id="first">Get it done today</p>
-			</div>
-			<ul class="list-content">
-				<li class="bold red" random="23"><span>Notebook</span><button>x</button></li>
-				<li><span>Jello</span><button>x</button></li>
-				<li><span>Spinach</span><button>x</button></li>
-				<li><span>Rice</span><button>x</button></li>
-				<li><span>Birthday Cake</span><button>x</button></li>
-				<li><span>Candles</span><button>x</button></li>
-			</ul>
-			<div class="clr"></div>
-			<div class="list-add">
-				<input id="userinput" class="tf-input" type="text" placeholder="Enter items">
-				<button id="enter" class="btn">Enter</button>
-			</div>
-		</section>
-	</div>
-	<script type="text/javascript" src="script.js"></script>
+    <main class="container">
+        <header>
+            <div class="container">
+                <h1>Shopping List</h1>
+                <p>Get it done today</p>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <ul id="item-list">
+                    <li><button>-</button>Notebook</li>
+                    <li><button>-</button>Jello</li>
+                    <li><button>-</button>Spinach</li>
+                    <li><button>-</button>Rice</li>
+                    <li><button>-</button>Birthday Cake</li>
+                    <li><button>-</button>Candles</li>
+                </ul>
+                <div>
+                    <input id="userinput" type="text" placeholder="Enter items">
+                    <button id="enter">Enter</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="main-footer">
+        <div class="container">
+            <p>oguzhankuslar &copy; 2022</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
