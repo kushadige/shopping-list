@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+    padding: 5px 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.delete-item {
+    text-decoration: none;
+    color: #ddd;
+}
+
+.delete-item:hover {
+    cursor: pointer;
+}
+
+.wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: rgb(235, 232, 232);
+}
+
+.container {
+    width: 600px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ddd;
+    text-align: center;
+    box-shadow: 0 0 10px #131313;
+}
+
+.bg-image {
+    width: 600px;
+    background: url(../img/showcase.jpg) no-repeat center center/cover;
+}
+
+
+.content {
+    border: 1px solid #131313;
+    background:  rgb(22, 43, 48);
+    padding: 20px 10px;
+    margin: 20px 60px;
+    box-shadow: 0 0 20px #131313;
+}
+
+.row {
+    background: #fff;
+    padding-top: 20px;
+}
+
+.content #item-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+}
+
+.content #item {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #131313;
+    text-align: center;
+    font-size: 1rem;
+}
+.content #item:focus {
+    outline: 0;
+}
+
+.content .btn {
+    margin: 20px 0;
+    padding: 8px 20px;
+    align-self: center;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    background: #5b758e;
+    text-transform: uppercase;
+}
+.content .btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.items {
+    padding: 20px;
+}
+
+.content .item-list {
+    background: #fff;
+    color: #131313;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.content .item-list .item {
+    display: flex;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.content #filter {
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    
+}
+.content #filter:focus {
+    outline: 0;
+}
+.content #filter::placeholder {
+    color: #888;
+}
+
+.clear {
+    background: #888;
+    color: white;
+    display: block;
+    margin-top: 20px;
+    width: 90px;
+    padding: 3px;
+    margin-left: 3px;
+    font-size: .8rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#main-footer {
+    width: 600px;
+    padding: 5px;
+    font-size: .8rem;
+    background: rgb(22, 43, 48);
+    color:#ddd;
+}
+
+
+@media only screen and (max-width:500px){
+    .container {
+        width: 100vw;
+    }
+
+    .bg-image {
+        width: 100%;
+    }
+
+    #main-footer {
+        width: 100%;
+    }
+
+    .content {
+        padding: 10px;
+        margin: 20px;
+    }
+}

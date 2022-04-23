@@ -1,59 +1,158 @@
-var button = document.getElementById("enter");
-var input = document.getElementById("userinput");
-var ul = document.querySelector("ul");
+// UI variables
+const form = document.querySelector('#item-form');
+const input = document.querySelector('#item');
+const itemList = document.querySelector('.item-list');
+const filter = document.querySelector('#filter');
+const clearBtn = document.querySelector('.clear');
 
-button.addEventListener("click",function(){
-    if(input.value.length > 0){
-        var btn = document.createElement("button");
-        var li = document.createElement("li");
-        btn.append("-");
-        btn.addEventListener("click",removeItemAfterClick);
-        li.append(btn, input.value);
-        li.addEventListener("click",changeItemAfterClick);
-        ul.append(li);
-        input.value="";
-    }
-});
 
-input.addEventListener("keypress",function(event){
-    if(event.which===13 && input.value.length > 0){
-        var btn = document.createElement("button");
-        var li = document.createElement("li");
-        btn.append("-");
-        btn.addEventListener("click",removeItemAfterClick);
-        li.append(btn, input.value);
-        li.addEventListener("click",changeItemAfterClick);
-        ul.append(li);
-        input.value="";
-    }
-});
+// Load all event listeners
+loadEventListeners();
 
-function removeItemAfterClick(event){
-    event.target.parentElement.remove();
+// Load all event listeners
+function loadEventListeners(){
+    // DOM load event
+    document.addEventListener('DOMContentLoaded', getItems);
+
+    //Add item event
+    form.addEventListener('submit', addItem);
+
+    // Remove item event
+    document.body.addEventListener('click', removeItem);
+    
+    // Clear all
+    clearBtn.addEventListener('click', removeAll);
+
+    // Filter items
+    filter.addEventListener('keyup', filterItems);
 }
 
-function changeItemAfterClick(event){
-    if(!control(event)){
-        event.target.classList.add("text-done");
-        event.target.children[0].innerHTML = "x";
+// Get Items from Local Storage
+function getItems(){
+    let items;
+    if(localStorage.getItem('items') === null) {
+        items = [];
     } else {
-        event.target.classList.remove("text-done");
-        event.target.children[0].innerHTML = "-";
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+
+    items.forEach(function(item){
+        // create li element
+        const li = document.createElement('li');
+        // create text node and append to li
+        li.appendChild(document.createTextNode(item));
+        // add class
+        li.className = 'item';
+        // create link item
+        const link = document.createElement('a');
+        link.textContent = 'x';
+        // add class
+        link.className = 'delete-item';
+        // append link to li
+        li.appendChild(link);
+
+        // append li to ul
+        itemList.appendChild(li);
+    });
+}
+
+// Add Item
+function addItem(e){
+    if(input.value === ''){
+        return;
+    }
+
+    // create li element
+    const li = document.createElement('li');
+    // create text node and append to li
+    li.appendChild(document.createTextNode(input.value));
+    // add class
+    li.className = 'item';
+    // create link item
+    const link = document.createElement('a');
+    link.textContent = 'x';
+    // add class
+    link.className = 'delete-item';
+    // append link to li
+    li.appendChild(link);
+
+    // append li to ul
+    itemList.appendChild(li);
+
+    // store in local storage
+    storeItemInLocalStorage(input.value);
+
+    // clear input
+    input.value = '';
+
+    e.preventDefault();
+}
+
+// Store Item
+function storeItemInLocalStorage(item){
+    let items;
+    if(localStorage.getItem('items') === null) {
+        items = [];
+    } else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+
+    items.push(item);
+
+    localStorage.setItem('items', JSON.stringify(items));
+}
+
+// Remove Item
+function removeItem(e){
+    if(e.target.classList.contains('delete-item')){
+
+        const val = e.target.parentElement.firstChild.textContent;
+
+        e.target.parentElement.remove();
+
+        // Delete from local storage
+        deleteItemFromLocalStorage(val);
     }
 }
 
-function control(event){
-    var control = false;
-    if(event.target.className === 'text-done')
-        control = true;
-    return control;
+// Delete Item from LS
+function deleteItemFromLocalStorage(val){
+    let items;
+    if(localStorage.getItem('items') === null) {
+        items = [];
+    } else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+
+    items.forEach(function(item, index){
+        if(item === val) {
+            items.splice(index, 1);
+        }
+    });
+
+    localStorage.setItem('items', JSON.stringify(items));
 }
 
-for(var i=0;i<document.querySelectorAll("button").length-1;i++){
-    document.querySelectorAll("button")[i].addEventListener("click",removeItemAfterClick);
+// Remove All
+function removeAll(){
+    if(confirm('are you sure?')){
+        while(itemList.firstChild){
+            itemList.removeChild(itemList.firstChild);
+        }
+        localStorage.clear();
+    }
 }
 
-for(var i=0;i<document.querySelectorAll("li").length;i++){
-    document.querySelectorAll("li")[i].addEventListener("click",changeItemAfterClick);
-}
+// Filter Items
+function filterItems(e){
+    const text = e.target.value.toLowerCase();
 
+    document.querySelectorAll('li').forEach(function(item){
+        
+        if(item.firstChild.textContent.toLowerCase().indexOf(text) != -1){
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}

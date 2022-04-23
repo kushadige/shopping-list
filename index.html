@@ -8,35 +8,39 @@
     <title>Shopping List</title>
 </head>
 <body>
-    <main class="container">
-        <header>
-            <div class="container">
-                <h1>Shopping List</h1>
-                <p>Get it done today</p>
-            </div>
-        </header>
-        <section>
-            <div class="container">
-                <ul id="item-list">
-                    <li><button>-</button>Notebook</li>
-                    <li><button>-</button>Jello</li>
-                    <li><button>-</button>Spinach</li>
-                    <li><button>-</button>Rice</li>
-                    <li><button>-</button>Birthday Cake</li>
-                    <li><button>-</button>Candles</li>
-                </ul>
-                <div>
-                    <input id="userinput" type="text" placeholder="Enter items">
-                    <button id="enter">Enter</button>
+
+    <div class="wrapper">
+        <div class="container bg-image">
+            <div class="content">
+                <div class="row">
+                    <header class="header">
+                        <h1>Shopping List</h1>
+                        <p>to-buy list</p>
+                    </header>
+                    <main class="main">
+                        <form id="item-form"> 
+                            <div class="input-field">
+                                <input type="text" name="item" id="item" placeholder="">
+                            </div>
+                            <input type="submit" value="Add Item" class="btn">
+                        </form>
+                        <div class="items">
+                            <div class="items-content">
+                                <h2>Items</h2>
+                                <input type="text" name="filter" id="filter" placeholder="Filter Item">
+                                <ul class="item-list"></ul>
+                                <a href="#" class="clear">Clear all</a>
+                            </div>
+                        </div>
+                    </main>
                 </div>
             </div>
-        </section>
-    </main>
-    <footer id="main-footer">
-        <div class="container">
-            <p>oguzhankuslar &copy; 2022</p>
+            <footer id="main-footer">
+                <p>oguzhankuslar &copy; 2022</p>
+            </footer>
         </div>
-    </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
